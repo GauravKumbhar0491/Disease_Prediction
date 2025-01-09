@@ -10,17 +10,29 @@ bot = ChatBot()
 # Route for the homepage
 @app.route('/')
 def home():
-    return render_template('index.html')  # Render an HTML template
+    return render_template('index.html')  # Ensure index.html is in the templates/ folder
 
+# API route for chatbot interaction
 @app.route('/api/chatbot', methods=['POST'])
 def handle_chat():
-    data = json.loads(request.data.decode('utf-8'))
-    user_message = data['message']
-    bot_response = bot.take_response(user_message);
-    resp = make_response(jsonify({'response': bot_response}), 200)
+    try:
+        # Parse incoming JSON data
+        data = json.loads(request.data.decode('utf-8'))
+        user_message = data.get('message')
 
-    # return the Bot's responce
-    return resp
+        # Check if message is provided
+        if not user_message:
+            return make_response(jsonify({'error': 'Message is required'}), 400)
 
+        # Generate chatbot response
+        bot_response = bot.take_response(user_message)
+        return make_response(jsonify({'response': bot_response}), 200)
+    
+    except json.JSONDecodeError:
+        return make_response(jsonify({'error': 'Invalid JSON'}), 400)
+    except Exception as e:
+        return make_response(jsonify({'error': str(e)}), 500)
+
+# Main entry point
 if __name__ == '__main__':
     app.run(debug=True)
