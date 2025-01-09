@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="chatbox" role="dialog" aria-labelledby="chatTitle" aria-describedby="chatDescription">
+        <h2 id="chatTitle" class="visually-hidden">AI Mini Chat</h2>
+        <div class="messages" id="messages" role="log" aria-live="polite"></div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type your message here..." aria-label="Message input">
+            <button id="sendBtn" aria-label="Send message">Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

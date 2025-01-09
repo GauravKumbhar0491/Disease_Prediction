@@ -1,0 +1,121 @@
+{
+    "intents": [
+        {
+
+            "tag": "Common Cold",
+            "patterns": [ "Runny nose", "sore throat" , "coughing", "sneezing", "body aches", "mild fever" ],
+            "responses": "\n- Drink warm liquids (ginger tea, chicken soup).\n- Gargle with salt water for a sore throat.\n- Use a humidifier to ease congestion.\n"
+        },
+        {
+            "tag": "Flu (Influenza)",
+            "patterns": [ "High fever", "chills", "fatigue", "muscle aches", "headache", "cough", "sore throat" ],
+            "responses": "\n- Stay hydrated with water, herbal tea, and broths.\n- Rest as much as possible.\n- Ginger or honey tea to soothe the throat and reduce inflammation.\n"
+        },
+        {
+            "tag": "Migraine",
+            "patterns": [ "Intense throbbing or pulsing headaches", "nausea", "sensitivity to light/sound" ],
+            "responses": "\n- Drink ginger tea for nausea relief.\n- Apply a cold compress to the forehead.\n- Rest in a dark, quiet room.\n"
+        },
+        {
+            "tag": "Diarrhea",
+            "patterns": [ "Frequent loose stools", "abdominal pain", "bloating", "dehydration" ],
+            "responses": "\n- Drink ORS (Oral Rehydration Solution).\n- Eat plain foods like bananas, rice, applesauce, and toast (BRAT diet).\n- Ginger or peppermint tea to soothe the stomach.\n"
+        },
+        {
+            "tag": "Constipation",
+            "patterns": [ "Difficulty passing stool", "bloating", "abdominal pain" ],
+            "responses": "\n- Drink plenty of water.\n- Eat fiber-rich foods like fruits, vegetables, and whole grains.\n - Take warm lemon water in the morning.\n"
+        },
+        {
+            "tag": " Sore Throat",
+            "patterns": [ "Pain or scratchiness in the throat", "difficulty swallowing", "swollen glands" ],
+            "responses": "\n- Gargle with warm salt water.\n- Drink honey and lemon tea.\n- Use a humidifier to keep the throat moist.\n"
+        },
+        {
+            "tag": "Acid Reflux (GERD)",
+            "patterns": [ "Heartburn", "chest pain", "regurgitation", "difficulty swallowing" ],
+            "responses": "\n- Drink a mixture of baking soda and water for quick relief.\n- Chew sugar-free gum after meals to neutralize acid.\n- Avoid spicy, fatty, and acidic foods.\n"
+        },
+        {
+            "tag": "Sinusitis",
+            "patterns": [ "Nasal congestion", "facial pain", "headache", "fever", "cough" ],
+            "responses": "\n- Steam inhalation with eucalyptus oil.\n- Stay hydrated to thin the mucus.\n- Use a saline nasal spray.\n"
+        },
+        {
+            "tag": "Indigestion",
+            "patterns": [ "Bloating", "heartburn", "nausea", "gas", "stomach discomfort" ],
+            "responses": "\n- Drink ginger tea or chew ginger slices.\n- Avoid eating large meals.\n- Drink warm water with lemon and honey.\n"
+        },
+        {
+            "tag": "Cough",
+            "patterns": [ " Persistent coughing", "chest pain", "shortness of breath" ],
+            "responses": "\n- Honey and turmeric in warm water.\n- Inhale steam with a few drops of eucalyptus oil.\n- Ginger tea to reduce throat irritation.\n"
+        },
+        {
+            "tag": "Asthma",
+            "patterns": [ "Shortness of breath", " wheezing", "coughing", "tightness in the chest" ],
+            "responses": "\n- Drink warm water with honey and ginger.\n- Inhale steam with peppermint oil.\n- Avoid allergens (dust, smoke, pet dander).\n"
+        },
+        {
+            "tag": "Urinary Tract Infection (UTI)",
+            "patterns": [ "Frequent urination", "burning sensation during urination", "pelvic pain" ],
+            "responses": "\n- Drink cranberry juice.\n- Stay hydrated with plenty of water.\n- Take a warm bath to ease discomfort.\n"
+        },
+        {
+            "tag": "Allergic Rhinitis (Hay Fever)",
+            "patterns": [ "Sneezing", "runny or stuffy nose", "itchy eyes, throat, and nose" ],
+            "responses": "\n- Drink peppermint or chamomile tea.\n- Use a saline nasal spray.\n- Keep windows closed during high pollen times.\n"
+        },
+        {
+            "tag": "High Blood Pressure (Hypertension)",
+            "patterns": [ "Headaches", "dizziness", "shortness of breath", "nosebleeds (in severe cases)" ],
+            "responses": "\n- Drink hibiscus or green tea.\n- Eat a diet rich in potassium (bananas, spinach).\n- Practice deep breathing exercises.\n"
+        },
+        {
+            "tag": "Insomnia",
+            "patterns": [ "Difficulty falling asleep", "waking up frequently", "tiredness during the day" ],
+            "responses": "\n- Drink chamomile tea before bed.\n- Practice relaxation techniques like meditation.\n- Limit screen time before bedtime.\n"
+        },
+        {
+            "tag": "Fever",
+            "patterns": [ "Elevated body temperature", "sweating", "chills", "headache", "weakness" ],
+            "responses": "\n- Drink tulsi (holy basil) tea.\n- Take a lukewarm bath or sponge bath.\n- Stay hydrated with water and herbal teas.\n"
+        },
+        {
+            "tag": "Back Pain",
+            "patterns": [ "Dull or sharp pain in the lower or upper back", "stiffness", "limited range of motion" ],
+            "responses": "\n- Apply a hot or cold compress.\n- Perform gentle stretching exercises.\n- Take turmeric milk for its anti-inflammatory properties.\n"
+        },
+        {
+            "tag": "Dandruff",
+            "patterns": [ "Itchy scalp", "flaky skin on the scalp", "hair fall." ],
+            "responses": "\n- Massage the scalp with coconut oil and lemon juice.\n- Use tea tree oil diluted with carrier oil.\n- Rinse hair with apple cider vinegar solution.\n"
+        },
+        {
+            "tag": "Eczema",
+            "patterns": [ "What is a Botnet?", "Bonet?" ],
+            "responses": "\n- Apply coconut oil to the affected area.\n- Use an oatmeal bath to soothe the skin.\n- Avoid harsh soaps and detergents.\n"
+        },
+        {
+            "tag": "Acne",
+            "patterns": [ "Red, itchy, dry, or cracked skin" ],
+            "responses": "\n- TLS is also an identification tool just like SSL, but it offers better security features. It provides additional protection to the data and hence SSL and TLS are often used together for better protection.\n"
+        },
+        {
+            "tag": "greeting",
+            "patterns": [ "Hi", "How are you" , "Hello", "Good day" ],
+            "responses": "Hello\n",
+            "context_set": ""
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [ "Bye", "See you later", "Goodbye" ],
+            "responses": "See you later, thanks for visiting\n"
+        },
+        {
+            "tag": "thanks",
+            "patterns": [ "Thanks", "Thank you", "That's helpful" ],
+            "responses": "Happy to help!\n"
+        }
+    ]
+}
