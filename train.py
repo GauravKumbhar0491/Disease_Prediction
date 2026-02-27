@@ -1,7 +1,5 @@
 import json
 from processing import tokenize, bag_of_words, stem
-# import random
-# import chat
 import numpy as np
 
 import torch
@@ -10,71 +8,45 @@ from torch.utils.data import Dataset, DataLoader
 from model import NeuralNet
 
 
-# import model
-
-# open the json file and load its content
-with open('intents.json', 'r') as file:
+# ── Load intents ─────────────────────────────────────────────────────────────
+with open('intents.json', 'r', encoding='utf-8') as file:
     intents = json.load(file)
 
 all_words = []
 tags = []
-xy = []  # tuple of tokenized word and the associated tag
+xy = []  # (tokenized_pattern, tag) pairs
+
 for intent in intents['intents']:
     tag = intent['tag']
     tags.append(tag)
-    # checking for each single input of hte user
     for pattern in intent['patterns']:
-        word = tokenize(pattern)
-        # collect the tokenized pattern in all_word list
-        all_words.extend(word)
-        xy.append((word, tag))
+        words = tokenize(pattern)
+        all_words.extend(words)
+        xy.append((words, tag))
 
-ignore_word = ['?', '!', '.', ',']
-# stem all the words excluding punctuations
-all_words = [stem(word) for word in all_words if word not in ignore_word]
-# to remove duplicates
+# Stem & deduplicate vocabulary
+ignore_chars = ['?', '!', '.', ',', ';', ':', '-', '(', ')', '/']
+all_words = [stem(w) for w in all_words if w not in ignore_chars]
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
-# print(len(xy), "patterns")
-# print(len(tags), "tags:", tags)
-# print(len(all_words), "unique stemmed words:", all_words)
+print(f"✅ Loaded {len(tags)} intent tags, {len(all_words)} unique stemmed words, {len(xy)} training patterns")
 
-x_train = []  # for bag of words
-y_train = []  # for indices
+# ── Build training data ───────────────────────────────────────────────────────
+x_train = []
+y_train = []
+
 for (pattern_sentence, tag) in xy:
-    bag =bag_of_words(pattern_sentence, all_words)
+    bag = bag_of_words(pattern_sentence, all_words)
     x_train.append(bag)
-
     label = tags.index(tag)
     y_train.append(label)
 
-x_train = np.array(x_train)
-y_train = np.array(y_train)
-
-# Hyperparameters
-num_epoch = 1000
-batch_size = 8
-learning_rate = 0.001
-input_size = len(x_train[0])
-hidden_size = 8
-output_size = len(tags)
-print(input_size, output_size)
+x_train = np.array(x_train, dtype=np.float32)
+y_train = np.array(y_train, dtype=np.int64)
 
 
-# Example data preprocessing
-def preprocess_data(x_train):
-    # Convert X_train from list of lists of strings to float32 numpy array
-    x_train = np.array([list(map(float, item)) for item in x_train], dtype=np.float32)
-    return x_train
-
-
-x_train = preprocess_data(x_train)
-
-
-# defining Dataset and Dataloader
-
-
+# ── Dataset & DataLoader ─────────────────────────────────────────────────────
 class ChatDataSet(Dataset):
     def __init__(self):
         self.n_sample = len(x_train)
@@ -88,84 +60,88 @@ class ChatDataSet(Dataset):
         return self.n_sample
 
 
+# ── Hyperparameters ───────────────────────────────────────────────────────────
+NUM_EPOCHS    = 1500       # more epochs for convergence on larger dataset
+BATCH_SIZE    = 16         # larger batch for stability
+LEARNING_RATE = 0.001
+INPUT_SIZE    = len(all_words)
+HIDDEN_SIZE   = 256        # much larger than original (was 8)
+OUTPUT_SIZE   = len(tags)
+LOG_INTERVAL  = 100        # print loss every N epochs
+
+print(f"📐 Input size: {INPUT_SIZE} | Hidden size: {HIDDEN_SIZE} | Output (classes): {OUTPUT_SIZE}")
+
 dataset = ChatDataSet()
-# to occur process in main process and to not train the data any particular pattern
-train_DataLoader = DataLoader(dataset=dataset,
-                              batch_size=batch_size,
-                              shuffle=True,
-                              num_workers=0)
+train_loader = DataLoader(
+    dataset=dataset,
+    batch_size=BATCH_SIZE,
+    shuffle=True,
+    num_workers=0
+)
 
+# ── Model, Loss, Optimizer ────────────────────────────────────────────────────
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = NeuralNet(input_size, hidden_size, num_classes=output_size)
+print(f"🖥️  Training on: {device}")
 
-# loss and optimizer
+model = NeuralNet(INPUT_SIZE, HIDDEN_SIZE, num_classes=OUTPUT_SIZE).to(device)
+
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
 
-# loop over epoch to train the model
-for epoch in range(num_epoch):
-    for (words, label) in train_DataLoader:
+# Learning rate scheduler — reduces LR when loss plateaus
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+    optimizer, mode='min', factor=0.5, patience=100
+)
+
+# ── Training Loop ─────────────────────────────────────────────────────────────
+print("\n🚀 Starting training...\n")
+best_loss = float('inf')
+
+for epoch in range(NUM_EPOCHS):
+    model.train()
+    epoch_loss = 0.0
+    correct = 0
+    total = 0
+
+    for (words, labels) in train_loader:
         words = words.to(device)
-        label = label.to(dtype=torch.long).to(device)
-        # forward pass
+        labels = labels.to(dtype=torch.long).to(device)
+
         outputs = model(words)
-        loss = criterion(outputs, label)
-        # zero the gradient before backword pass
+        loss = criterion(outputs, labels)
+
         optimizer.zero_grad()
         loss.backward()
-        # parameter update
         optimizer.step()
 
-    # if (epoch+1) % 100 ==0:
-    #     loss=None
-    #     print(f'Epoch [{epoch+1}/{num_epoch}], Loss: {loss.item():.4f}')
-print("Training Complete")
+        epoch_loss += loss.item()
+        _, predicted = torch.max(outputs, 1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
 
+    avg_loss = epoch_loss / len(train_loader)
+    accuracy = 100.0 * correct / total
+
+    scheduler.step(avg_loss)
+
+    if avg_loss < best_loss:
+        best_loss = avg_loss
+
+    if (epoch + 1) % LOG_INTERVAL == 0 or epoch == 0:
+        lr = optimizer.param_groups[0]['lr']
+        print(f"Epoch [{epoch+1:>4}/{NUM_EPOCHS}]  Loss: {avg_loss:.4f}  Accuracy: {accuracy:.1f}%  LR: {lr:.6f}")
+
+print(f"\n✅ Training complete! Best loss: {best_loss:.4f}")
+
+# ── Save model ────────────────────────────────────────────────────────────────
+FILE = "data.pth"
 data = {
     "model_state": model.state_dict(),
-    "input_size": input_size,
-    "hidden_size": hidden_size,
-    "output_size": output_size,
-    "all_words": all_words,
-    "tags": tags
+    "input_size":  INPUT_SIZE,
+    "hidden_size": HIDDEN_SIZE,
+    "output_size": OUTPUT_SIZE,
+    "all_words":   all_words,
+    "tags":        tags
 }
-
-FILE = "data.pth"
 torch.save(data, FILE)
-print(f'training complete. file saved to {FILE}')
-
-# bot_name = "Bots Health \U0001F468\u200D\u2695\ufe0f"
-# print("Please enter your Symptoms along with ','....(press 'Bye' to exit!!)")
-#
-# while True:
-#     sentence = input("You: ")
-#     if sentence.lower() == "bye":
-#         break
-#
-#     sentence = tokenize(sentence)
-#     X = bag_of_words(sentence, all_words)
-#     X = X.reshape(1, X.shape[0])  # convert 1D BoW vector in 2D array
-#     X = torch.from_numpy(X).to(device)
-#
-#     output = model(X)
-#     # the maximum value in the output tensor
-#     _, predicted = torch.max(output, dim=1)
-#     tag = tags[predicted.item()]
-#
-#     probs = torch.softmax(output, dim=1)  # convert logits into probabilities
-#     prob = probs[0][predicted.item()]  # probabilities for the first sample
-#     if prob.item() > 0.75:
-#         for intent in intents['intents']:
-#             if tag == intent["tag"]:
-#                 if tag == "greeting" or tag == "thanks" or tag == "goodbye":
-#                     print(f"{bot_name}: {intent['responses']}")
-#                 else:
-#                     print(f"{bot_name}: {"You might be facing "}{tag} {intent['responses']}")
-#                 break
-#     else:
-#         print(f"{bot_name}: I do not understand...")
-#
-# sentence = ["hello", "how", "are", "you"]
-# words = ["hi", "hello", "I", "you", "bye", "thank", "cool"]
-# bag = bag_of_words(sentence, words)
-# print(bag)
+print(f"💾 Model saved to '{FILE}'")

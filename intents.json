@@ -1,121 +1,593 @@
 {
     "intents": [
         {
-
-            "tag": "Common Cold",
-            "patterns": [ "Runny nose", "sore throat" , "coughing", "sneezing", "body aches", "mild fever" ],
-            "responses": "\n- Drink warm liquids (ginger tea, chicken soup).\n- Gargle with salt water for a sore throat.\n- Use a humidifier to ease congestion.\n"
-        },
-        {
-            "tag": "Flu (Influenza)",
-            "patterns": [ "High fever", "chills", "fatigue", "muscle aches", "headache", "cough", "sore throat" ],
-            "responses": "\n- Stay hydrated with water, herbal tea, and broths.\n- Rest as much as possible.\n- Ginger or honey tea to soothe the throat and reduce inflammation.\n"
-        },
-        {
-            "tag": "Migraine",
-            "patterns": [ "Intense throbbing or pulsing headaches", "nausea", "sensitivity to light/sound" ],
-            "responses": "\n- Drink ginger tea for nausea relief.\n- Apply a cold compress to the forehead.\n- Rest in a dark, quiet room.\n"
-        },
-        {
-            "tag": "Diarrhea",
-            "patterns": [ "Frequent loose stools", "abdominal pain", "bloating", "dehydration" ],
-            "responses": "\n- Drink ORS (Oral Rehydration Solution).\n- Eat plain foods like bananas, rice, applesauce, and toast (BRAT diet).\n- Ginger or peppermint tea to soothe the stomach.\n"
-        },
-        {
-            "tag": "Constipation",
-            "patterns": [ "Difficulty passing stool", "bloating", "abdominal pain" ],
-            "responses": "\n- Drink plenty of water.\n- Eat fiber-rich foods like fruits, vegetables, and whole grains.\n - Take warm lemon water in the morning.\n"
-        },
-        {
-            "tag": " Sore Throat",
-            "patterns": [ "Pain or scratchiness in the throat", "difficulty swallowing", "swollen glands" ],
-            "responses": "\n- Gargle with warm salt water.\n- Drink honey and lemon tea.\n- Use a humidifier to keep the throat moist.\n"
-        },
-        {
-            "tag": "Acid Reflux (GERD)",
-            "patterns": [ "Heartburn", "chest pain", "regurgitation", "difficulty swallowing" ],
-            "responses": "\n- Drink a mixture of baking soda and water for quick relief.\n- Chew sugar-free gum after meals to neutralize acid.\n- Avoid spicy, fatty, and acidic foods.\n"
-        },
-        {
-            "tag": "Sinusitis",
-            "patterns": [ "Nasal congestion", "facial pain", "headache", "fever", "cough" ],
-            "responses": "\n- Steam inhalation with eucalyptus oil.\n- Stay hydrated to thin the mucus.\n- Use a saline nasal spray.\n"
-        },
-        {
-            "tag": "Indigestion",
-            "patterns": [ "Bloating", "heartburn", "nausea", "gas", "stomach discomfort" ],
-            "responses": "\n- Drink ginger tea or chew ginger slices.\n- Avoid eating large meals.\n- Drink warm water with lemon and honey.\n"
-        },
-        {
-            "tag": "Cough",
-            "patterns": [ " Persistent coughing", "chest pain", "shortness of breath" ],
-            "responses": "\n- Honey and turmeric in warm water.\n- Inhale steam with a few drops of eucalyptus oil.\n- Ginger tea to reduce throat irritation.\n"
-        },
-        {
-            "tag": "Asthma",
-            "patterns": [ "Shortness of breath", " wheezing", "coughing", "tightness in the chest" ],
-            "responses": "\n- Drink warm water with honey and ginger.\n- Inhale steam with peppermint oil.\n- Avoid allergens (dust, smoke, pet dander).\n"
-        },
-        {
-            "tag": "Urinary Tract Infection (UTI)",
-            "patterns": [ "Frequent urination", "burning sensation during urination", "pelvic pain" ],
-            "responses": "\n- Drink cranberry juice.\n- Stay hydrated with plenty of water.\n- Take a warm bath to ease discomfort.\n"
-        },
-        {
-            "tag": "Allergic Rhinitis (Hay Fever)",
-            "patterns": [ "Sneezing", "runny or stuffy nose", "itchy eyes, throat, and nose" ],
-            "responses": "\n- Drink peppermint or chamomile tea.\n- Use a saline nasal spray.\n- Keep windows closed during high pollen times.\n"
-        },
-        {
-            "tag": "High Blood Pressure (Hypertension)",
-            "patterns": [ "Headaches", "dizziness", "shortness of breath", "nosebleeds (in severe cases)" ],
-            "responses": "\n- Drink hibiscus or green tea.\n- Eat a diet rich in potassium (bananas, spinach).\n- Practice deep breathing exercises.\n"
-        },
-        {
-            "tag": "Insomnia",
-            "patterns": [ "Difficulty falling asleep", "waking up frequently", "tiredness during the day" ],
-            "responses": "\n- Drink chamomile tea before bed.\n- Practice relaxation techniques like meditation.\n- Limit screen time before bedtime.\n"
-        },
-        {
-            "tag": "Fever",
-            "patterns": [ "Elevated body temperature", "sweating", "chills", "headache", "weakness" ],
-            "responses": "\n- Drink tulsi (holy basil) tea.\n- Take a lukewarm bath or sponge bath.\n- Stay hydrated with water and herbal teas.\n"
-        },
-        {
-            "tag": "Back Pain",
-            "patterns": [ "Dull or sharp pain in the lower or upper back", "stiffness", "limited range of motion" ],
-            "responses": "\n- Apply a hot or cold compress.\n- Perform gentle stretching exercises.\n- Take turmeric milk for its anti-inflammatory properties.\n"
-        },
-        {
-            "tag": "Dandruff",
-            "patterns": [ "Itchy scalp", "flaky skin on the scalp", "hair fall." ],
-            "responses": "\n- Massage the scalp with coconut oil and lemon juice.\n- Use tea tree oil diluted with carrier oil.\n- Rinse hair with apple cider vinegar solution.\n"
-        },
-        {
-            "tag": "Eczema",
-            "patterns": [ "What is a Botnet?", "Bonet?" ],
-            "responses": "\n- Apply coconut oil to the affected area.\n- Use an oatmeal bath to soothe the skin.\n- Avoid harsh soaps and detergents.\n"
-        },
-        {
-            "tag": "Acne",
-            "patterns": [ "Red, itchy, dry, or cracked skin" ],
-            "responses": "\n- TLS is also an identification tool just like SSL, but it offers better security features. It provides additional protection to the data and hence SSL and TLS are often used together for better protection.\n"
-        },
-        {
             "tag": "greeting",
-            "patterns": [ "Hi", "How are you" , "Hello", "Good day" ],
-            "responses": "Hello\n",
-            "context_set": ""
+            "patterns": [
+                "Hi",
+                "How are you",
+                "Hello",
+                "Good day",
+                "Hey",
+                "Hi there",
+                "Howdy",
+                "Good morning",
+                "Good evening",
+                "What's up"
+            ],
+            "responses": "Hello! I'm MediAI 👨‍⚕️. Please describe your symptoms and I'll try to help.\n"
         },
         {
             "tag": "goodbye",
-            "patterns": [ "Bye", "See you later", "Goodbye" ],
-            "responses": "See you later, thanks for visiting\n"
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Take care",
+                "Farewell",
+                "See you",
+                "Talk to you later",
+                "Bye bye"
+            ],
+            "responses": "Take care and stay healthy! Goodbye 😊\n"
         },
         {
             "tag": "thanks",
-            "patterns": [ "Thanks", "Thank you", "That's helpful" ],
-            "responses": "Happy to help!\n"
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Thanks a lot",
+                "Much appreciated",
+                "Thank you so much",
+                "Great help",
+                "Helpful thanks"
+            ],
+            "responses": "Happy to help! Remember to consult a doctor for professional medical advice 🏥\n"
+        },
+        {
+            "tag": "Common Cold",
+            "patterns": [
+                "Runny nose",
+                "sore throat",
+                "coughing",
+                "sneezing",
+                "body aches",
+                "mild fever",
+                "I have a runny nose and sore throat",
+                "stuffy nose",
+                "nasal congestion",
+                "watery eyes",
+                "I am sneezing a lot",
+                "my nose is running",
+                "blocked nose",
+                "mild cough and cold",
+                "scratchy throat",
+                "I feel like I have a cold"
+            ],
+            "responses": "\n**Common Cold — Home Remedies:**\n- Drink warm liquids (ginger tea, chicken soup, honey-lemon water).\n- Gargle with warm salt water for a sore throat.\n- Use a humidifier to ease congestion.\n- Rest well and stay hydrated.\n- Steam inhalation to clear nasal passages.\n\n> ⚠️ See a doctor if symptoms worsen after 10 days.\n"
+        },
+        {
+            "tag": "Flu (Influenza)",
+            "patterns": [
+                "High fever",
+                "chills",
+                "fatigue",
+                "muscle aches",
+                "headache",
+                "cough",
+                "sore throat",
+                "I have the flu",
+                "influenza symptoms",
+                "body pain and fever",
+                "severe body aches",
+                "I feel very weak with fever",
+                "shivering and high temperature",
+                "sudden high fever",
+                "flu like symptoms",
+                "I ache all over",
+                "extreme tiredness with fever"
+            ],
+            "responses": "\n**Flu (Influenza) — Home Remedies:**\n- Stay hydrated with water, herbal teas, and broths.\n- Rest as much as possible — your body needs it.\n- Ginger or honey tea to soothe the throat and reduce inflammation.\n- Tulsi (holy basil) tea to help reduce fever.\n- Avoid contact with others to prevent spreading.\n\n> ⚠️ Seek medical help if fever exceeds 103°F or breathing becomes difficult.\n"
+        },
+        {
+            "tag": "Migraine",
+            "patterns": [
+                "Intense throbbing or pulsing headaches",
+                "nausea",
+                "sensitivity to light or sound",
+                "I have a migraine",
+                "severe headache on one side",
+                "pounding headache",
+                "nausea with headache",
+                "light sensitivity",
+                "sound sensitivity",
+                "visual aura before headache",
+                "throbbing pain in the head",
+                "I cannot bear light",
+                "migraine attack"
+            ],
+            "responses": "\n**Migraine — Home Remedies:**\n- Drink ginger tea to help with nausea.\n- Apply a cold or warm compress to the forehead or neck.\n- Rest in a dark, quiet room.\n- Stay hydrated and avoid triggers (bright light, strong smells, stress).\n- Magnesium-rich foods (nuts, seeds) may help reduce frequency.\n\n> ⚠️ Consult a neurologist if migraines are frequent or very severe.\n"
+        },
+        {
+            "tag": "Diarrhea",
+            "patterns": [
+                "Frequent loose stools",
+                "abdominal pain",
+                "bloating",
+                "dehydration",
+                "watery stools",
+                "stomach cramps and loose motions",
+                "I have diarrhea",
+                "loose motion",
+                "frequent trips to the bathroom",
+                "upset stomach with diarrhea",
+                "I have liquid stools",
+                "stomach pain and diarrhea"
+            ],
+            "responses": "\n**Diarrhea — Home Remedies:**\n- Drink ORS (Oral Rehydration Solution) to replace lost fluids.\n- Follow the BRAT diet: Bananas, Rice, Applesauce, Toast.\n- Ginger or peppermint tea to soothe the stomach.\n- Avoid dairy, fatty foods, and caffeine until recovered.\n\n> ⚠️ Seek urgent care if diarrhea lasts more than 2 days or you see blood.\n"
+        },
+        {
+            "tag": "Constipation",
+            "patterns": [
+                "Difficulty passing stool",
+                "bloating",
+                "abdominal pain",
+                "hard stools",
+                "I cannot go to the bathroom",
+                "no bowel movement",
+                "straining to pass stool",
+                "I am constipated",
+                "stool is dry and hard",
+                "infrequent bowel movement",
+                "difficulty defecating",
+                "stomach feels heavy and full"
+            ],
+            "responses": "\n**Constipation — Home Remedies:**\n- Drink plenty of water (8+ glasses/day).\n- Eat fiber-rich foods: fruits, vegetables, whole grains, lentils.\n- Drink warm lemon water in the morning.\n- Exercise regularly to stimulate digestion.\n- Prunes or prune juice are natural laxatives.\n\n> ⚠️ See a doctor if constipation persists for more than a week.\n"
+        },
+        {
+            "tag": "Sore Throat",
+            "patterns": [
+                "Pain or scratchiness in the throat",
+                "difficulty swallowing",
+                "swollen glands",
+                "my throat hurts",
+                "I have a sore throat",
+                "throat pain",
+                "painful swallowing",
+                "throat feels scratchy",
+                "tonsil pain",
+                "swollen tonsils",
+                "throat infection",
+                "I can't swallow",
+                "burning throat"
+            ],
+            "responses": "\n**Sore Throat — Home Remedies:**\n- Gargle with warm salt water 3–4 times a day.\n- Drink honey and lemon tea to soothe inflammation.\n- Use a humidifier to keep the throat moist.\n- Suck on ice chips or gargle with cold water for pain relief.\n- Avoid irritants like smoke and dry air.\n\n> ⚠️ See a doctor if you have white patches, high fever, or symptoms lasting over a week.\n"
+        },
+        {
+            "tag": "Acid Reflux",
+            "patterns": [
+                "Heartburn",
+                "chest pain",
+                "regurgitation",
+                "difficulty swallowing",
+                "stomach acid coming up",
+                "burning in chest after eating",
+                "I have acid reflux",
+                "GERD symptoms",
+                "belching and chest burn",
+                "sour taste in mouth",
+                "acid coming into throat",
+                "burning sensation in stomach",
+                "indigestion and heartburn"
+            ],
+            "responses": "\n**Acid Reflux (GERD) — Home Remedies:**\n- Mix 1 tsp baking soda in water for quick relief.\n- Chew sugar-free gum after meals to neutralize acid.\n- Avoid spicy, fatty, and acidic foods.\n- Eat smaller, more frequent meals.\n- Don't lie down immediately after eating.\n- Elevate the head of your bed by 6–8 inches.\n\n> ⚠️ Persistent acid reflux can damage the esophagus — see a gastroenterologist.\n"
+        },
+        {
+            "tag": "Sinusitis",
+            "patterns": [
+                "Nasal congestion",
+                "facial pain",
+                "headache",
+                "fever",
+                "cough",
+                "sinus pressure",
+                "pain behind the eyes",
+                "blocked sinuses",
+                "I have sinusitis",
+                "sinus headache",
+                "mucus dripping in throat",
+                "post-nasal drip",
+                "pain in cheekbones",
+                "yellow or green mucus",
+                "throbbing face pain"
+            ],
+            "responses": "\n**Sinusitis — Home Remedies:**\n- Steam inhalation with a few drops of eucalyptus oil.\n- Stay hydrated to thin the mucus.\n- Use a saline nasal spray or neti pot.\n- Warm compresses on the face to relieve pressure.\n- Avoid allergens and cigarette smoke.\n\n> ⚠️ See a doctor if symptoms persist beyond 10 days or you have severe facial pain.\n"
+        },
+        {
+            "tag": "Indigestion",
+            "patterns": [
+                "Bloating",
+                "heartburn",
+                "nausea",
+                "gas",
+                "stomach discomfort",
+                "I feel bloated",
+                "stomach gas",
+                "uncomfortable after eating",
+                "I have indigestion",
+                "feeling full quickly",
+                "burping a lot",
+                "stomach gurgling",
+                "abdominal discomfort after meals"
+            ],
+            "responses": "\n**Indigestion — Home Remedies:**\n- Drink ginger tea or chew fresh ginger slices.\n- Avoid eating large heavy meals — eat smaller portions.\n- Drink warm water with lemon and honey before meals.\n- Fennel seeds after meals help reduce gas and bloating.\n- Peppermint tea aids digestion.\n\n> ⚠️ If indigestion is persistent or severe, rule out ulcers with a doctor.\n"
+        },
+        {
+            "tag": "Cough",
+            "patterns": [
+                "Persistent coughing",
+                "chest pain due to cough",
+                "shortness of breath with cough",
+                "I cannot stop coughing",
+                "dry cough",
+                "wet cough",
+                "productive cough",
+                "coughing up mucus",
+                "tickle in throat causing cough",
+                "whooping cough",
+                "cough that won't stop",
+                "irritating cough"
+            ],
+            "responses": "\n**Cough — Home Remedies:**\n- Mix honey with turmeric in warm water or milk.\n- Inhale steam with a few drops of eucalyptus oil.\n- Drink ginger tea to reduce throat irritation.\n- Honey and black pepper are effective natural cough suppressants.\n- Stay well-hydrated.\n\n> ⚠️ See a doctor if cough lasts more than 3 weeks or you cough up blood.\n"
+        },
+        {
+            "tag": "Asthma",
+            "patterns": [
+                "Shortness of breath",
+                "wheezing",
+                "coughing at night",
+                "tightness in the chest",
+                "I have asthma",
+                "can't breathe",
+                "trouble breathing",
+                "chest tightening",
+                "breathlessness on exertion",
+                "asthma attack",
+                "breathing is difficult",
+                "I wheeze when I breathe",
+                "labored breathing"
+            ],
+            "responses": "\n**Asthma — Home Remedies (for mild symptoms):**\n- Drink warm water with honey and ginger to ease breathing.\n- Inhale steam with peppermint oil.\n- Avoid allergens: dust, smoke, pet dander, pollen.\n- Practice breathing exercises (pursed-lip breathing).\n- Keep windows closed during high pollen days.\n\n> ⚠️ Asthma attacks are medical emergencies. Always carry your inhaler and seek immediate help for severe episodes.\n"
+        },
+        {
+            "tag": "UTI",
+            "patterns": [
+                "Frequent urination",
+                "burning sensation during urination",
+                "pelvic pain",
+                "I have a UTI",
+                "urinary tract infection",
+                "pain when peeing",
+                "cloudy urine",
+                "strong smelling urine",
+                "blood in urine",
+                "need to urinate constantly",
+                "bladder pain",
+                "lower abdominal discomfort with urination"
+            ],
+            "responses": "\n**Urinary Tract Infection (UTI) — Home Remedies:**\n- Drink unsweetened cranberry juice.\n- Stay well-hydrated with plenty of water.\n- Take a warm bath to ease discomfort.\n- Avoid caffeine, alcohol, and spicy foods.\n- Vitamin C supplements may help acidify urine.\n\n> ⚠️ UTIs require antibiotics — please see a doctor promptly to avoid complications.\n"
+        },
+        {
+            "tag": "Allergic Rhinitis",
+            "patterns": [
+                "Sneezing",
+                "runny or stuffy nose",
+                "itchy eyes",
+                "itchy throat",
+                "itchy nose",
+                "hay fever",
+                "seasonal allergies",
+                "I have allergies",
+                "watery eyes and sneezing",
+                "pollen allergy",
+                "dust allergy",
+                "sneezing in the morning",
+                "nasal drip and sneezing",
+                "itchy watery eyes"
+            ],
+            "responses": "\n**Allergic Rhinitis (Hay Fever) — Home Remedies:**\n- Drink peppermint or chamomile tea to reduce inflammation.\n- Use a saline nasal spray to clear allergens.\n- Keep windows closed during high pollen times.\n- Shower after being outdoors to remove pollen.\n- Local honey may help build tolerance to local pollen.\n\n> ⚠️ Antihistamines prescribed by a doctor offer more effective relief for moderate-to-severe cases.\n"
+        },
+        {
+            "tag": "High Blood Pressure",
+            "patterns": [
+                "Headaches",
+                "dizziness",
+                "shortness of breath",
+                "nosebleeds in severe cases",
+                "I have high blood pressure",
+                "hypertension",
+                "my blood pressure is high",
+                "pounding in the chest or neck",
+                "vision problems with high BP",
+                "flushing and sweating",
+                "nervousness and high BP"
+            ],
+            "responses": "\n**Hypertension (High Blood Pressure) — Home Remedies:**\n- Drink hibiscus or green tea regularly.\n- Eat a diet rich in potassium (bananas, spinach, sweet potatoes).\n- Reduce sodium intake significantly.\n- Practice deep breathing and meditation daily.\n- Exercise at least 30 minutes most days.\n- Limit alcohol and avoid smoking.\n\n> ⚠️ High blood pressure is a silent killer — monitor it regularly and follow your doctor's prescription.\n"
+        },
+        {
+            "tag": "Insomnia",
+            "patterns": [
+                "Difficulty falling asleep",
+                "waking up frequently",
+                "tiredness during the day",
+                "I cannot sleep",
+                "trouble sleeping",
+                "insomnia",
+                "I wake up at night",
+                "poor sleep quality",
+                "racing thoughts at night",
+                "lying awake for hours",
+                "I feel tired but can't sleep",
+                "restless sleep"
+            ],
+            "responses": "\n**Insomnia — Home Remedies:**\n- Drink chamomile or valerian root tea before bed.\n- Practice relaxation techniques: meditation, deep breathing, or yoga.\n- Limit screen time at least 1 hour before bedtime.\n- Keep a consistent sleep schedule (same time every day).\n- Keep the bedroom cool, dark, and quiet.\n- Avoid caffeine after 2 PM.\n\n> ⚠️ Chronic insomnia (3+ months) should be evaluated by a doctor.\n"
+        },
+        {
+            "tag": "Fever",
+            "patterns": [
+                "Elevated body temperature",
+                "sweating",
+                "chills",
+                "headache",
+                "weakness",
+                "I have a fever",
+                "my temperature is high",
+                "feeling hot",
+                "body is burning",
+                "high temperature",
+                "I feel feverish",
+                "trembling with fever",
+                "hot forehead",
+                "temperature above 100"
+            ],
+            "responses": "\n**Fever — Home Remedies:**\n- Drink tulsi (holy basil) tea to help reduce fever.\n- Take a lukewarm sponge bath — avoid cold water.\n- Stay hydrated with water and herbal teas (electrolyte drinks help).\n- Rest and keep the room well-ventilated.\n- A wet cloth on the forehead can provide relief.\n\n> ⚠️ Seek immediate medical care if fever exceeds 103°F, lasts more than 3 days, or is accompanied by seizures.\n"
+        },
+        {
+            "tag": "Back Pain",
+            "patterns": [
+                "Dull or sharp pain in the lower or upper back",
+                "stiffness",
+                "limited range of motion",
+                "lower back pain",
+                "I have back pain",
+                "my back hurts",
+                "back ache",
+                "pain radiating down the leg",
+                "sciatica pain",
+                "spine pain",
+                "muscle spasm in back",
+                "I can't bend my back",
+                "backache after sitting"
+            ],
+            "responses": "\n**Back Pain — Home Remedies:**\n- Apply a hot compress for muscle spasms or a cold pack for acute injury.\n- Perform gentle stretching exercises (cat-cow, child's pose).\n- Drink turmeric milk for its anti-inflammatory properties.\n- Maintain good posture while sitting and standing.\n- Sleep on a firm mattress on your side with a pillow between your knees.\n\n> ⚠️ See a doctor if pain is severe, radiates down your leg, or is accompanied by weakness or numbness.\n"
+        },
+        {
+            "tag": "Diabetes",
+            "patterns": [
+                "Frequent urination and thirst",
+                "blurry vision",
+                "slow healing wounds",
+                "I have diabetes",
+                "high blood sugar",
+                "I feel very thirsty all the time",
+                "unexplained weight loss",
+                "tingling in hands and feet",
+                "feeling hungry even after eating",
+                "fatigue with high sugar",
+                "sweet-smelling breath",
+                "feeling dizzy with sugar issues"
+            ],
+            "responses": "\n**Diabetes — Management Tips:**\n- Drink bitter gourd (karela) juice — it helps lower blood sugar naturally.\n- Fenugreek seeds soaked overnight, drunk in the morning, can help.\n- Eat a low-glycemic diet: whole grains, vegetables, legumes.\n- Exercise regularly — 30 minutes of brisk walking daily.\n- Monitor blood glucose levels regularly.\n- Cinnamon tea may help improve insulin sensitivity.\n\n> ⚠️ Diabetes requires medical management. Follow your doctor's treatment plan strictly.\n"
+        },
+        {
+            "tag": "Anxiety",
+            "patterns": [
+                "Feeling anxious",
+                "excessive worry",
+                "panic attacks",
+                "heart pounding",
+                "I have anxiety",
+                "I feel nervous all the time",
+                "restlessness",
+                "difficulty concentrating",
+                "I panic for no reason",
+                "I feel a sense of dread",
+                "shortness of breath with anxiety",
+                "trembling and sweating from nerves",
+                "anxiety attack"
+            ],
+            "responses": "\n**Anxiety — Home Remedies:**\n- Practice deep belly breathing (4-7-8 technique) during anxious moments.\n- Drink chamomile or ashwagandha tea to calm the nervous system.\n- Regular aerobic exercise significantly reduces anxiety.\n- Limit caffeine and alcohol.\n- Journaling and mindfulness meditation are powerful tools.\n- Maintain a consistent daily routine.\n\n> ⚠️ Severe or persistent anxiety should be evaluated by a mental health professional.\n"
+        },
+        {
+            "tag": "Depression",
+            "patterns": [
+                "Feeling sad all the time",
+                "loss of interest",
+                "hopelessness",
+                "feeling empty",
+                "I think I have depression",
+                "no motivation",
+                "I don't enjoy anything anymore",
+                "feeling worthless",
+                "crying without reason",
+                "sleep too much or too little",
+                "weight gain or loss with sadness",
+                "withdrawing from friends and family"
+            ],
+            "responses": "\n**Depression — Supportive Strategies:**\n- Regular exercise (even 20 min of walking) boosts endorphins significantly.\n- Maintain a consistent sleep schedule.\n- Stay connected with trusted friends or family.\n- Sunlight exposure in the morning helps regulate mood.\n- Omega-3 rich foods (salmon, walnuts, flaxseeds) support brain health.\n- Practice gratitude journaling.\n\n> ⚠️ Depression is a serious condition. Please speak to a mental health professional — therapy and/or medication can be life-changing.\n"
+        },
+        {
+            "tag": "Skin Allergy",
+            "patterns": [
+                "Itchy skin",
+                "rashes",
+                "hives",
+                "red bumps on skin",
+                "skin irritation",
+                "I have a rash",
+                "skin is itchy and red",
+                "allergic skin reaction",
+                "eczema flare up",
+                "contact dermatitis",
+                "swelling and itching on skin",
+                "urticaria",
+                "skin blisters"
+            ],
+            "responses": "\n**Skin Allergy — Home Remedies:**\n- Apply aloe vera gel to the affected area for cooling relief.\n- Use a cold compress to reduce itching and swelling.\n- Oatmeal bath soothes inflamed, itchy skin.\n- Apply diluted tea tree oil or coconut oil.\n- Avoid known allergens (certain soaps, metals, foods).\n- Antihistamine foods: quercetin-rich foods like apples and onions.\n\n> ⚠️ Seek immediate care for severe reactions with swelling, breathing difficulty (anaphylaxis).\n"
+        },
+        {
+            "tag": "Acne",
+            "patterns": [
+                "Pimples",
+                "acne",
+                "blackheads",
+                "whiteheads",
+                "oily skin with breakouts",
+                "I have pimples on my face",
+                "cystic acne",
+                "acne on back and chest",
+                "skin breakout",
+                "hormonal acne",
+                "red inflamed pimples",
+                "acne scars"
+            ],
+            "responses": "\n**Acne — Home Remedies:**\n- Apply diluted tea tree oil (natural antibacterial) to spots.\n- Use aloe vera gel as a gentle, soothing spot treatment.\n- Apply a honey mask — honey has antimicrobial properties.\n- Wash face twice daily with a gentle cleanser.\n- Avoid touching your face and change pillowcases frequently.\n- Reduce sugar and dairy intake as they can trigger breakouts.\n\n> ⚠️ Severe or cystic acne should be treated by a dermatologist.\n"
+        },
+        {
+            "tag": "Dandruff",
+            "patterns": [
+                "Itchy scalp",
+                "flaky skin on the scalp",
+                "hair fall",
+                "white flakes on hair",
+                "I have dandruff",
+                "scalp is very itchy",
+                "flakes on shoulders",
+                "dry scalp",
+                "seborrheic dermatitis",
+                "oily scalp with dandruff"
+            ],
+            "responses": "\n**Dandruff — Home Remedies:**\n- Massage the scalp with coconut oil mixed with lemon juice.\n- Diluted tea tree oil added to shampoo helps fight fungus.\n- Rinse hair with apple cider vinegar solution (1:1 with water).\n- Neem oil is a powerful antifungal scalp treatment.\n- Avoid hot showers which strip natural oils.\n\n> ⚠️ If dandruff is severe or accompanied by hair loss, see a dermatologist.\n"
+        },
+        {
+            "tag": "Arthritis",
+            "patterns": [
+                "Joint pain",
+                "swollen joints",
+                "stiff joints in the morning",
+                "joint inflammation",
+                "I have arthritis",
+                "my knees hurt",
+                "rheumatoid arthritis",
+                "osteoarthritis",
+                "painful and swollen fingers",
+                "joint pain worsens in cold",
+                "creaking joints",
+                "joint pain and stiffness",
+                "difficulty moving joints"
+            ],
+            "responses": "\n**Arthritis — Home Remedies:**\n- Turmeric milk (golden milk) is a powerful natural anti-inflammatory.\n- Epsom salt baths help reduce joint swelling.\n- Warm or cold compresses on painful joints.\n- Omega-3 fatty acids (fish oil, flaxseeds) reduce inflammation.\n- Gentle exercises like swimming or yoga maintain joint mobility.\n- Ginger tea daily helps with pain and stiffness.\n\n> ⚠️ Arthritis requires medical diagnosis and management — see a rheumatologist.\n"
+        },
+        {
+            "tag": "Dehydration",
+            "patterns": [
+                "Very thirsty",
+                "dark yellow urine",
+                "dizziness from not drinking water",
+                "I am dehydrated",
+                "dry mouth",
+                "not urinating enough",
+                "headache from dehydration",
+                "fatigue and dry skin",
+                "I haven't had water",
+                "feeling faint from dehydration",
+                "lips are very dry",
+                "no urine for hours"
+            ],
+            "responses": "\n**Dehydration — Home Remedies:**\n- Drink water slowly and steadily — sip, don't gulp.\n- ORS (Oral Rehydration Solution) replenishes lost salts and fluids.\n- Coconut water is an excellent natural electrolyte drink.\n- Eat water-rich foods: cucumber, watermelon, oranges.\n- Avoid caffeine and alcohol which worsen dehydration.\n\n> ⚠️ Severe dehydration (confusion, fainting, no urine for 8+ hours) requires emergency care.\n"
+        },
+        {
+            "tag": "Eye Strain",
+            "patterns": [
+                "Eyes feel tired",
+                "blurry vision after screen time",
+                "headache from looking at screen",
+                "digital eye strain",
+                "my eyes hurt after computer work",
+                "burning eyes",
+                "dry eyes",
+                "watery eyes",
+                "eye fatigue",
+                "I have been staring at screens all day",
+                "redness in eyes from screen",
+                "difficulty focusing eyes"
+            ],
+            "responses": "\n**Eye Strain — Home Remedies:**\n- Follow the 20-20-20 rule: every 20 min, look 20 feet away for 20 seconds.\n- Place cool cucumber slices or chilled tea bags on closed eyes.\n- Use artificial tear eye drops for dryness.\n- Adjust screen brightness and use blue-light filtering glasses.\n- Ensure your workspace has adequate lighting.\n- Gently massage your temples and around the eye sockets.\n\n> ⚠️ Sudden vision loss or severe eye pain needs immediate medical attention.\n"
+        },
+        {
+            "tag": "Toothache",
+            "patterns": [
+                "Tooth pain",
+                "toothache",
+                "throbbing pain in tooth",
+                "gum pain",
+                "my tooth hurts",
+                "sensitive teeth",
+                "pain when eating cold or hot food",
+                "jaw pain from tooth",
+                "wisdom tooth pain",
+                "cavity pain",
+                "I have a toothache",
+                "aching tooth"
+            ],
+            "responses": "\n**Toothache — Home Remedies:**\n- Clove oil contains eugenol, a natural anesthetic — apply to the tooth.\n- Rinse with warm salt water to reduce inflammation.\n- Apply a cold ice pack on the cheek to numb pain.\n- Garlic paste has antibacterial properties — apply near the tooth.\n- Over-the-counter dental gel (benzocaine) provides temporary relief.\n\n> ⚠️ Toothaches require dental treatment. See a dentist as soon as possible to prevent infection.\n"
+        },
+        {
+            "tag": "Nausea",
+            "patterns": [
+                "Feeling nauseous",
+                "I feel like vomiting",
+                "queasy stomach",
+                "motion sickness",
+                "nausea",
+                "I am nauseous",
+                "feeling sick to my stomach",
+                "waves of nausea",
+                "want to throw up",
+                "morning sickness",
+                "nausea after eating",
+                "dizzy and nauseous",
+                "stomach feels unsettled"
+            ],
+            "responses": "\n**Nausea — Home Remedies:**\n- Sip cold ginger tea or chew on a piece of raw ginger.\n- Peppermint tea or inhaling peppermint oil can ease nausea.\n- Sip clear fluids slowly (water, flat ginger ale, broth).\n- Eat small, bland meals (crackers, toast, bananas).\n- Acupressure on the P6 point (inner wrist) may relieve nausea.\n\n> ⚠️ Seek care if nausea is persistent, severe, or accompanied by chest pain or bloody vomit.\n"
+        },
+        {
+            "tag": "Muscle Cramps",
+            "patterns": [
+                "Muscle cramps",
+                "leg cramps at night",
+                "charley horse",
+                "sudden muscle spasm",
+                "my calf is cramping",
+                "painful muscle contraction",
+                "muscle tightening",
+                "cramp in leg while sleeping",
+                "foot cramp",
+                "I have muscle cramps",
+                "muscle knot",
+                "thigh cramping"
+            ],
+            "responses": "\n**Muscle Cramps — Home Remedies:**\n- Gently stretch and massage the cramped muscle immediately.\n- Apply a heating pad or warm towel to relax the muscle.\n- Drink water or an electrolyte drink — cramps are often due to dehydration.\n- Eat potassium-rich foods: bananas, oranges, potatoes.\n- Magnesium supplementation helps prevent nocturnal (night) cramps.\n\n> ⚠️ Frequent severe cramps may indicate poor circulation or nerve issues — see a doctor.\n"
         }
     ]
 }

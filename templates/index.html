@@ -1,22 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatBot</title>
+    <meta name="description"
+        content="AI-powered disease symptom checker and home remedy advisor. Describe your symptoms and get instant guidance.">
+    <title>MediAI — Disease Prediction Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
+
 <body>
-    <div class="chatbox" role="dialog" aria-labelledby="chatTitle" aria-describedby="chatDescription">
-        <h2 id="chatTitle" class="visually-hidden">AI Mini Chat</h2>
-        <div class="messages" id="messages" role="log" aria-live="polite"></div>
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="Type your message here..." aria-label="Message input">
-            <button id="sendBtn" aria-label="Send message">Send</button>
-        </div>
+
+    <!-- Animated background blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Particle dots overlay -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main app layout -->
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                </div>
+                <span class="brand-name">MediAI</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-label">Features</div>
+                <a href="#" class="nav-item active" id="nav-symptoms">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="16" />
+                        <line x1="8" y1="12" x2="16" y2="12" />
+                    </svg>
+                    Symptom Checker
+                </a>
+                <a href="#" class="nav-item" id="nav-history">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Chat History
+                </a>
+                <a href="#" class="nav-item" id="nav-remedies">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    Home Remedies
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="disclaimer-card">
+                    <div class="disclaimer-icon">⚕️</div>
+                    <p>This AI provides general guidance only. Always consult a licensed physician for medical advice.
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main chat area -->
+        <main class="chat-main">
+
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <div class="header-info">
+                        <h1 class="header-title">Symptom Checker</h1>
+                        <div class="status-pill">
+                            <span class="status-dot"></span>
+                            AI Online
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="icon-btn" id="clearBtn" title="Clear conversation" aria-label="Clear conversation">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6" />
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Messages -->
+            <div class="messages-wrapper">
+                <div class="messages" id="messages" role="log" aria-live="polite" aria-label="Chat messages">
+
+                    <!-- Welcome message -->
+                    <div class="welcome-block">
+                        <div class="welcome-avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                        </div>
+                        <h2 class="welcome-title">Hello! I'm MediAI 👋</h2>
+                        <p class="welcome-sub">Describe your symptoms and I'll help identify possible conditions and
+                            suggest home remedies.</p>
+                        <div class="quick-chips">
+                            <button class="chip" onclick="quickAsk('I have a runny nose and sore throat')">🤧 Cold
+                                symptoms</button>
+                            <button class="chip" onclick="quickAsk('I have a high fever and chills')">🤒 Fever &amp;
+                                chills</button>
+                            <button class="chip" onclick="quickAsk('I have a throbbing headache and nausea')">🤕
+                                Headache</button>
+                            <button class="chip" onclick="quickAsk('I have heartburn and chest pain')">💊
+                                Heartburn</button>
+                            <button class="chip" onclick="quickAsk('I have difficulty sleeping and tiredness')">😴
+                                Insomnia</button>
+                            <button class="chip" onclick="quickAsk('I have lower back pain and stiffness')">🦴 Back
+                                Pain</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Input area -->
+            <div class="input-bar">
+                <div class="input-container">
+                    <div class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <textarea id="userInput" placeholder="Describe your symptoms (e.g., 'I have a headache and fever…')"
+                        aria-label="Symptom description input" rows="1"></textarea>
+                    <button id="sendBtn" aria-label="Send message" title="Send">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13" />
+                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+            </div>
+
+        </main>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-import torch
+﻿import torch
 from processing import tokenize, bag_of_words
 # import model
 import json
@@ -53,7 +53,9 @@ class ChatBot:
                     if tag == "greeting" or tag == "thanks" or tag == "goodbye":
                         return f"{self.bot_name}: {intent['responses']}"
                     else:
-                        return f"{self.bot_name}: {"You might be facing "}{tag} {intent['responses']}"
+                        prefix = "You might be facing "
+                        return f"{self.bot_name}: {prefix}{tag} {intent['responses']}"
                     break
         else:
             return f"{self.bot_name}: I do not understand..."
+
