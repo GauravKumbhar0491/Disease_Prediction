@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, make_response, render_template
+from flask import Flask, request, jsonify, make_response, render_template, send_from_directory
 from flask_cors import CORS
 import json
 from chat import ChatBot
@@ -11,6 +11,11 @@ bot = ChatBot()
 @app.route('/')
 def home():
     return render_template('index.html')  # Ensure index.html is in the templates/ folder
+
+# Route for sitemap.xml
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('templates', 'sitemap.xml')
 
 # API route for chatbot interaction
 @app.route('/api/chatbot', methods=['POST'])
